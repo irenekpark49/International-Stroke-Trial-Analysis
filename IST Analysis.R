@@ -44,7 +44,7 @@ ist <- read.csv("C:/Irene Park's Documents/Academics/MS Applied Biostatistics/BS
                                             pulmonary_embolism == "No" ~ 0),
                 trt = dplyr::case_when(treatment == "Yes" ~ 1,
                                        treatment == "No" ~ 0)) %>%
-  # Remove input variable
+  # Remove input variables
   dplyr::select(-aspirin, -heparin) %>%
   # Label variables
   expss::apply_labels(sex = "Sex", 
