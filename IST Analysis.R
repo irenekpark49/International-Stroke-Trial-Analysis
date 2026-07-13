@@ -1,72 +1,112 @@
 ---
 title: "IST Analysis"
 author: "Irene Kimura Park"
-date: ''
-output:
-  pdf_document: default
-  html_document: default
+date: "`r Sys.Date()`"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(expss)
-library(table1)
+library(gtsummary)
 library(mediation)
+set.seed(1234)
 ```
 
-### IST Dataset
-```{r}
-#Reading in Dataset
+### International Stroke Trial Dataset
+```{r Data Prep}
 ist <- read.csv("C:/Irene Park's Documents/Academics/MS Applied Biostatistics/BS 851 - Applied Statistics in Clinical Trials I/Project/IST.csv") %>%
-#Selecting Variables for Analysis
+  # Select variables for analysis
   dplyr::select(sex = SEX, 
                 age = AGE, 
                 aspirin = RXASP, 
                 heparin = RXHEP, 
                 hemorrhagic_stroke = DRSH, 
                 pulmonary_embolism = DPE) %>% 
-#Creating Treatment Variable & Recoding Sex 
-  mutate(trt = case_when((aspirin=="Y" & heparin=="N") ~ "Y", 
-                         (aspirin=="N" & heparin=="N") ~ "N"),
-         sex = recode_factor(sex, "M"="Male", "F"="Female")) %>%
-#Selecting Subjects of Interest
-  filter(trt %in% c("Y", "N") & 
-         hemorrhagic_stroke %in% c("Y", "N") & 
-         pulmonary_embolism %in% c("Y", "N")
-         ) %>% 
-#Converting Factors to Binomial Variables
-  mutate_at(c("hemorrhagic_stroke", "pulmonary_embolism", "trt"), 
-            list(~dplyr::recode(., "N"=0, .default=1))) %>%
-#Remove Unwanted Variables
-  dplyr::select(-c(aspirin, heparin)) %>%
-#Labeling Variables
-  apply_labels(sex = "Sex", 
-               age = "Age", 
-               trt="Treatment",
-               hemorrhagic_stroke = "Recurrent Hemorrhagic Stroke", 
-               pulmonary_embolism = "Pulmonary Embolism")
+  # Create treatment variable & recode sex
+  dplyr::mutate(treatment = case_when((aspirin == "Y" & heparin == "N") ~ "Yes", 
+                                      (aspirin == "N" & heparin == "N") ~ "No") %>%
+                  factor(levels = c("Yes", "No")),
+                sex = recode_factor(sex, "M" = "Male", "F" = "Female") %>%
+                  factor(levels = c("Male", "Female"))) %>%
+  # Select subjects of interest
+  dplyr::filter(treatment %in% c("Yes", "No"),
+                hemorrhagic_stroke %in% c("Y", "N"),
+                pulmonary_embolism %in% c("Y", "N")) %>%
+  # Recode and factor Yes/No binary variables
+  dplyr::mutate_at(.vars = c("hemorrhagic_stroke", "pulmonary_embolism"),
+                   .funs = ~ dplyr::recode_factor(.x, "Y" = "Yes", "N" = "No")) %>%
+  # Create new 0/1 binary variables for analysis
+  dplyr::mutate(stroke = dplyr::case_when(hemorrhagic_stroke == "Yes" ~ 1,
+                                          hemorrhagic_stroke == "No" ~ 0),
+                embolism = dplyr::case_when(pulmonary_embolism == "Yes" ~ 1,
+                                            pulmonary_embolism == "No" ~ 0),
+                trt = dplyr::case_when(treatment == "Yes" ~ 1,
+                                       treatment == "No" ~ 0)) %>%
+  # Remove input variable
+  dplyr::select(-aspirin, -heparin) %>%
+  # Label variables
+  expss::apply_labels(sex = "Sex", 
+                      age = "Age", 
+                      trt = "Treatment",
+                      hemorrhagic_stroke = "Recurrent Hemorrhagic Stroke", 
+                      pulmonary_embolism = "Pulmonary Embolism")
 
-#Descriptive Statistics
-table_html <- table1(~sex + age + factor(hemorrhagic_stroke) +factor(pulmonary_embolism) | factor(trt), data=ist, overall="Total", rowlabelhead="Treatment", caption="IST Dataset")
+
+
+# Table 1 - Demographic Characteristics
+table1 <- ist %>%
+  gtsummary::tbl_summary(
+    by = treatment,
+    include = c(sex, age, hemorrhagic_stroke, pulmonary_embolism),
+    type = gtsummary::all_dichotomous() ~ "categorical",
+    percent = "column", 
+    statistic = list(gtsummary::all_categorical() ~ "{n} ({p}%)", 
+                     gtsummary::all_continuous() ~ "{mean} ({sd})"),
+    digits = list(gtsummary::all_categorical() ~ c(0, 2),
+                  gtsummary::all_continuous() ~ c(2, 2)),
+    label = list(sex = "Sex (n, %)",
+                 age = "Age (mean, SD)",
+                 hemorrhagic_stroke = "Hemorrhagic Stroke (n, %)",
+                 pulmonary_embolism = "Pulmonary Embolism (n, %)") 
+    ) %>%
+  # Add overall column
+  gtsummary::add_overall(last = TRUE) %>%
+  # Add column headers and N
+  gtsummary::modify_header(
+    update = list(
+      label = "",
+      stat_1 = "**Treatment** \n 
+      (Aspirin 300 mg & no heparin) \n
+      N = {prettyNum(n, big.mark = ',')}", 
+      stat_2 = "**Placebo** \n 
+      (No aspirin or heparin) \n
+      N = {prettyNum(n, big.mark = ',')}", 
+      stat_0 = "**Total** \n 
+      N = {prettyNum(n, big.mark = ',')}")) %>%
+  # Remove automatically generated footnotes
+  gtsummary::remove_footnote_header(columns = gtsummary::everything()) 
 ```
 
 
 
 ### Mediation Analysis
 ```{r}
-#Logarithmic Mediator Model
-mediator_model <- glm(pulmonary_embolism ~ trt + age + sex, data=ist, family="binomial")
+# Logarithmic mediator model
+mediator_model <- stats::glm(embolism ~ trt + age + sex, 
+                             data = ist, family = "binomial")
 summary(mediator_model)
 
 
-#Logarithmic Outcome Model
-outcome_model <- glm(hemorrhagic_stroke ~ trt + pulmonary_embolism + age + sex, data=ist, family="binomial")
+# Logarithmic outcome model
+outcome_model <- stats::glm(stroke ~ trt + embolism + age + sex, 
+                            data = ist, family="binomial")
 summary(outcome_model)
 
 
-#Calculating Mediated Effects
-set.seed(1234)
-mediated_effects <- mediate(mediator_model, outcome_model, treat="trt", mediator="pulmonary_embolism")
+# Calculate mediated effects
+mediated_effects <- mediation::mediate(mediator_model, outcome_model, treat = "trt",
+                                       mediator = "embolism")
 summary(mediated_effects)
 ```
