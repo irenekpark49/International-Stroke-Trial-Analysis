@@ -1,0 +1,7 @@
+{
+  "bundle": "t001_ist_analysis",
+  "source_file": "IST Analysis.sas",
+  "source_blob_sha": "ebf7d33a42dcb281d0ddee5c42ff326475318dee",
+  "source_commit": "b291e76f4c40fb0c02fd15b8f4f19c12e3fb173f",
+  "notes": "Full IST clinical-trial analysis (descriptives, unadjusted/adjusted logistic regression, IPW via PROC GENMOD, and Cochran-Mantel-Haenszel interaction/stratified analyses). The original PROC IMPORT read a hardcoded SAS-Studio path; here the same 18 kept/renamed analysis variables are read inline via a DATALINES step (a 100-row sample of the repo's IST.csv, balanced across aspirin/placebo, sex, and hemorrhagic/initial-stroke outcomes). One further edit: the generic yes/no user format the program named $format is named $yn_format here; its value mapping and every attrib reference are otherwise identical. All analysis logic is verbatim."
+}

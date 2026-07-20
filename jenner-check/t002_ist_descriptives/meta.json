@@ -1,0 +1,7 @@
+{
+  "bundle": "t002_ist_descriptives",
+  "source_file": "IST Analysis.sas",
+  "source_blob_sha": "ebf7d33a42dcb281d0ddee5c42ff326475318dee",
+  "source_commit": "b291e76f4c40fb0c02fd15b8f4f19c12e3fb173f",
+  "notes": "Descriptive-statistics section of the IST analysis (data prep + PROC FORMAT + the overall and by-treatment PROC FREQ / PROC MEANS tables) — the same code and inline 100-row sample as t001, trimmed before the regression sections so it runs in a few seconds. Same substitutions as t001 (inline DATALINES in place of the external PROC IMPORT path; the yes/no user format named $yn_format instead of $format)."
+}
