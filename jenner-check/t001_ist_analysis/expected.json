@@ -1,0 +1,15 @@
+{
+  "_captured_at": "2026-07-20T11:11:46Z",
+  "_captured_run_id": "r_03217c067e054d0aba2cf4cc674daff0",
+  "status": "ok",
+  "exit_code": 1,
+  "log_contains": [
+    "NOTE: Wrote raw (100 rows, 18 columns).",
+    "NOTE: Wrote full_data (100 rows, 20 columns).",
+    "NOTE: FORMAT $yn_format defined (4 ranges).",
+    "NOTE: Wrote ist (100 rows, 19 columns).",
+    "NOTE: Response Variable: HEMORRHAGIC_STROKE"
+  ],
+  "log_does_not_contain": ["ERROR:", "[JENNER-ERROR"],
+  "diagnostics": {"parse_warnings": []}
+}

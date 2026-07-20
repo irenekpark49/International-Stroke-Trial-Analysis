@@ -1,0 +1,72 @@
+NOTE: Jenner v1.5.37 (build v1.5.37+886f95a5f1.20260717T051227Z.x86_64-unknown-linux-gnu)
+
+NOTE: Option OBS changed to 100.
+NOTE: DATA raw
+
+NOTE: Processing inline DATALINES (100 lines)
+
+NOTE: Read 100 rows from DATALINES.
+NOTE: Wrote raw (100 rows, 18 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA full_data
+
+
+NOTE: Read 100 rows from raw.
+NOTE: Wrote full_data (100 rows, 20 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC FORMAT library=WORK
+
+NOTE: FORMAT $sex_format defined (2 ranges).
+NOTE: FORMAT $conscious_format defined (3 ranges).
+NOTE: FORMAT $yn_format defined (4 ranges).
+NOTE: FORMAT $trt_format defined (2 ranges).
+NOTE: DATA ist
+
+
+NOTE: Read 100 rows from full_data.
+NOTE: Wrote ist (100 rows, 19 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: Option TITLE changed to Overall Descriptive Statistics.
+NOTE: PROC FREQ
+NOTE: ODS plot written: freq_sex.spec.json
+NOTE: ODS plot written: freq_conscious.spec.json
+NOTE: ODS plot written: freq_infarct_vis.spec.json
+NOTE: ODS plot written: freq_face_deficit.spec.json
+NOTE: ODS plot written: freq_arm_deficit.spec.json
+NOTE: ODS plot written: freq_leg_deficit.spec.json
+NOTE: ODS plot written: freq_dysphasia.spec.json
+NOTE: ODS plot written: freq_hemianopia.spec.json
+NOTE: ODS plot written: freq_visuospatial_disorder.spec.json
+NOTE: ODS plot written: freq_brainstem_signs.spec.json
+NOTE: ODS plot written: freq_hemorrhagic_stroke.spec.json
+NOTE: ODS plot written: freq_initial_hemstroke.spec.json
+NOTE: PROC FREQ statement used.
+NOTE: PROC MEANS
+NOTE: PROC MEANS statement used.
+NOTE: Option TITLE changed to Descriptive Statistics by Treatment.
+NOTE: PROC SORT data=ist
+
+NOTE: Read 100 rows from ist.
+NOTE: Wrote ist (100 rows, 19 columns).
+NOTE: PROC SORT statement used.
+NOTE: PROC FREQ
+NOTE: ODS plot written: freq_sex.spec.json
+NOTE: ODS plot written: freq_conscious.spec.json
+NOTE: ODS plot written: freq_infarct_vis.spec.json
+NOTE: ODS plot written: freq_face_deficit.spec.json
+NOTE: ODS plot written: freq_arm_deficit.spec.json
+NOTE: ODS plot written: freq_leg_deficit.spec.json
+NOTE: ODS plot written: freq_dysphasia.spec.json
+NOTE: ODS plot written: freq_hemianopia.spec.json
+NOTE: ODS plot written: freq_visuospatial_disorder.spec.json
+NOTE: ODS plot written: freq_brainstem_signs.spec.json
+NOTE: ODS plot written: freq_hemorrhagic_stroke.spec.json
+NOTE: PROC FREQ statement used.
+NOTE: PROC MEANS
+NOTE: PROC MEANS statement used.

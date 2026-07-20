@@ -1,0 +1,231 @@
+                                             Overall Descriptive Statistics
+
+                                                   The FREQ Procedure
+
+Sex       Frequency    Percent
+-------------------------------
+Female           51     51.00
+Male             49     49.00
+
+Conscious State    Frequency    Percent
+----------------------------------------
+Drowsy                    28     28.00
+Alert                     71     71.00
+Unconscious                1      1.00
+
+Visible Infarct    Frequency    Percent
+----------------------------------------
+No                        74     74.00
+Yes                       26     26.00
+
+Face Deficit    Frequency    Percent
+-------------------------------------
+Can't Assess            1      1.00
+No                     25     25.00
+Yes                    74     74.00
+
+Arm/Hand Deficit    Frequency    Percent
+-----------------------------------------
+Can't Assess                1      1.00
+No                         19     19.00
+Yes                        80     80.00
+
+Leg/Foot Deficit    Frequency    Percent
+-----------------------------------------
+Can't Assess                1      1.00
+No                         20     20.00
+Yes                        79     79.00
+
+Dysphasia       Frequency    Percent
+-------------------------------------
+Can't Assess            4      4.00
+No                     50     50.00
+Yes                    46     46.00
+
+Hemianopia      Frequency    Percent
+-------------------------------------
+Can't Assess           17     17.00
+No                     60     60.00
+Yes                    23     23.00
+
+Visuospatial Disorder    Frequency    Percent
+----------------------------------------------
+Can't Assess                    16     16.00
+No                              50     50.00
+Yes                             34     34.00
+
+Brainstem/Cerebellar Signs    Frequency    Percent
+---------------------------------------------------
+Can't Assess                         10     10.00
+No                                   81     81.00
+Yes                                   9      9.00
+
+Recurrent Hemorrgaic Stroke within 14 Days    Frequency    Percent
+-------------------------------------------------------------------
+No                                                   72     72.00
+Yes                                                  28     28.00
+
+Initial Hemorrhagic Stroke    Frequency    Percent
+---------------------------------------------------
+No                                   67     67.00
+Yes                                  33     33.00
+                                             Overall Descriptive Statistics
+
+                                                  The MEANS Procedure
+
+ Variable  Label            Mean        Std Dev
+ ----------------------------------------------
+ age       Age        69.7800000     10.6804646
+ sbp       SBP       160.8200000     24.8142107
+ ----------------------------------------------
+
+                                          Descriptive Statistics by Treatment
+
+                                                   The FREQ Procedure
+
+----------------------------------------------------- Treatment=N ------------------------------------------------------
+
+Sex       Frequency    Percent
+-------------------------------
+Female           24     51.06
+Male             23     48.94
+
+Conscious State    Frequency    Percent
+----------------------------------------
+Drowsy                    13     27.66
+Alert                     34     72.34
+
+Visible Infarct    Frequency    Percent
+----------------------------------------
+No                        34     72.34
+Yes                       13     27.66
+
+Face Deficit    Frequency    Percent
+-------------------------------------
+No                     13     27.66
+Yes                    34     72.34
+
+Arm/Hand Deficit    Frequency    Percent
+-----------------------------------------
+Can't Assess                1      2.13
+No                         11     23.40
+Yes                        35     74.47
+
+Leg/Foot Deficit    Frequency    Percent
+-----------------------------------------
+Can't Assess                1      2.13
+No                         11     23.40
+Yes                        35     74.47
+
+Dysphasia       Frequency    Percent
+-------------------------------------
+Can't Assess            2      4.26
+No                     16     34.04
+Yes                    29     61.70
+
+Hemianopia      Frequency    Percent
+-------------------------------------
+Can't Assess            8     17.02
+No                     27     57.45
+Yes                    12     25.53
+
+Visuospatial Disorder    Frequency    Percent
+----------------------------------------------
+Can't Assess                     8     17.02
+No                              22     46.81
+Yes                             17     36.17
+
+Brainstem/Cerebellar Signs    Frequency    Percent
+---------------------------------------------------
+Can't Assess                          6     12.77
+No                                   36     76.60
+Yes                                   5     10.64
+
+Recurrent Hemorrgaic Stroke within 14 Days    Frequency    Percent
+-------------------------------------------------------------------
+No                                                   36     76.60
+Yes                                                  11     23.40
+
+----------------------------------------------------- Treatment=Y ------------------------------------------------------
+
+Sex       Frequency    Percent
+-------------------------------
+Female           27     50.94
+Male             26     49.06
+
+Conscious State    Frequency    Percent
+----------------------------------------
+Drowsy                    15     28.30
+Alert                     37     69.81
+Unconscious                1      1.89
+
+Visible Infarct    Frequency    Percent
+----------------------------------------
+No                        40     75.47
+Yes                       13     24.53
+
+Face Deficit    Frequency    Percent
+-------------------------------------
+Can't Assess            1      1.89
+No                     12     22.64
+Yes                    40     75.47
+
+Arm/Hand Deficit    Frequency    Percent
+-----------------------------------------
+No                          8     15.09
+Yes                        45     84.91
+
+Leg/Foot Deficit    Frequency    Percent
+-----------------------------------------
+No                          9     16.98
+Yes                        44     83.02
+
+Dysphasia       Frequency    Percent
+-------------------------------------
+Can't Assess            2      3.77
+No                     34     64.15
+Yes                    17     32.08
+
+Hemianopia      Frequency    Percent
+-------------------------------------
+Can't Assess            9     16.98
+No                     33     62.26
+Yes                    11     20.75
+
+Visuospatial Disorder    Frequency    Percent
+----------------------------------------------
+Can't Assess                     8     15.09
+No                              28     52.83
+Yes                             17     32.08
+
+Brainstem/Cerebellar Signs    Frequency    Percent
+---------------------------------------------------
+Can't Assess                          4      7.55
+No                                   45     84.91
+Yes                                   4      7.55
+
+Recurrent Hemorrgaic Stroke within 14 Days    Frequency    Percent
+-------------------------------------------------------------------
+No                                                   36     67.92
+Yes                                                  17     32.08
+                                          Descriptive Statistics by Treatment
+
+                                                  The MEANS Procedure
+
+                                                Analysis Variable : age
+
+                                                   N
+                                    Treatment    Obs            Mean         Std Dev
+                                    ------------------------------------------------
+                                    N             47      69.2553191      11.3261300
+                                    Y             53      70.2452830      10.1600758
+                                    ------------------------------------------------
+
+                                               Analysis Variable : sbp
+
+                                                  N
+                                   Treatment    Obs             Mean         Std Dev
+                                   -------------------------------------------------
+                                   N             47      164.0000000      21.6433542
+                                   Y             53      158.0000000      27.2149563
+                                   -------------------------------------------------
